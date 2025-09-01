@@ -1,9 +1,8 @@
 "use client";
 
-import { useCallback } from "react";
-import { useSearchParams } from "next/dist/client/components/navigation";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import queryString from "query-string";
+import { useCallback } from "react";
 
 type useCategiesProps = {
   label: string;

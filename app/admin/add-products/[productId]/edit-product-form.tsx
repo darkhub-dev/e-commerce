@@ -7,21 +7,21 @@ import CustomCheckbox from "@/app/components/inputs/custom-checkbox";
 import Input from "@/app/components/inputs/input";
 import SelectColor from "@/app/components/inputs/select-color";
 import TextArea from "@/app/components/inputs/text-area";
+import firebaseApp from "@/libs/firebase";
 import { categories } from "@/utils/categories";
 import { colors } from "@/utils/colors";
-import { useCallback, useEffect, useState } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import toast from "react-hot-toast";
+import { Product } from "@prisma/client";
+import axios from "axios";
 import {
   getDownloadURL,
   getStorage,
   ref,
   uploadBytesResumable,
 } from "firebase/storage";
-import firebaseApp from "@/libs/firebase";
-import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Product } from "@prisma/client";
+import { useCallback, useEffect, useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 export type ImageType = {
   color: string;

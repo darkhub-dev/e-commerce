@@ -1,10 +1,10 @@
 "use client";
 
 import { ImageType } from "@/app/admin/add-products/add-product-form";
-import { useCallback, useEffect, useState } from "react";
-import SelectImage from "./select-image";
-import Button from "../button";
 import { SelectedImgType } from "@/app/product/[productId]/product-details";
+import { useCallback, useEffect, useState } from "react";
+import Button from "../button";
+import SelectImage from "./select-image";
 
 interface SelectColorsProps {
   item: ImageType;

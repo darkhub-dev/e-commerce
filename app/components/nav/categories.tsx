@@ -1,11 +1,12 @@
 "use client";
 
-import Container from "../container";
 import { categories } from "@/utils/categories";
-import Category from "./category";
 import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import Container from "../container";
+import Category from "./category";
 
-const Categories = () => {
+const CategoriesContent = () => {
   const params = useSearchParams();
   const category = params?.get("category");
   const pathname = usePathname();
@@ -32,6 +33,18 @@ const Categories = () => {
         </div>
       </Container>
     </div>
+  );
+};
+
+const Categories = () => {
+  return (
+    <Suspense
+      fallback={
+        <div className="hidden sm:block border-b-[0.5px] bg-slate-300 h-12"></div>
+      }
+    >
+      <CategoriesContent />
+    </Suspense>
   );
 };
 

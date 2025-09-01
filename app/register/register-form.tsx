@@ -1,18 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Heading from "../components/heading";
-import Input from "../components/inputs/input";
-import HorizontalLine from "../components/horizontal-line";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import Button from "../components/button";
-import Link from "next/link";
-import { AiOutlineGoogle } from "react-icons/ai";
-import toast from "react-hot-toast";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
-import axios from "axios";
 import { SafeUser } from "@/types";
+import axios from "axios";
+import { signIn } from "next-auth/react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import { AiOutlineGoogle } from "react-icons/ai";
+import Button from "../components/button";
+import Heading from "../components/heading";
+import HorizontalLine from "../components/horizontal-line";
+import Input from "../components/inputs/input";
 
 interface RegisterFormProps {
   currentUser: SafeUser | null;

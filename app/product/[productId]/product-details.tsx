@@ -1,18 +1,18 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
-import { Rating } from "@mui/material";
-import { productRating } from "@/utils/product-rating";
-import SetColor from "@/app/components/products/set-color";
-import SetQuantity from "@/app/components/products/set-quantity";
 import Button from "@/app/components/button";
 import ProductImage from "@/app/components/products/product-image";
-import { useCart } from "@/context/cart-context";
-import { MdCheckCircle, MdDone, MdOutlineClose } from "react-icons/md";
-import { useRouter } from "next/navigation";
-import toast from "react-hot-toast";
-import { formatPrice } from "@/utils/format-price";
+import SetColor from "@/app/components/products/set-color";
+import SetQuantity from "@/app/components/products/set-quantity";
 import Status from "@/app/components/status";
+import { useCart } from "@/context/cart-context";
+import { formatPrice } from "@/utils/format-price";
+import { productRating } from "@/utils/product-rating";
+import { Rating } from "@mui/material";
+import { useRouter } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { MdCheckCircle, MdDone, MdOutlineClose } from "react-icons/md";
 interface ProductDetailsProps {
   product: any;
 }

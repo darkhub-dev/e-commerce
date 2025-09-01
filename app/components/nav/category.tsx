@@ -1,7 +1,8 @@
 "use client";
 
-import { IconType } from "react-icons";
 import useCategories from "@/hooks/use-categories";
+import { Suspense } from "react";
+import { IconType } from "react-icons";
 
 interface CategoryProps {
   label: string;
@@ -9,7 +10,11 @@ interface CategoryProps {
   selected?: boolean;
 }
 
-const Category: React.FC<CategoryProps> = ({ label, icon: Icon, selected }) => {
+const CategoryContent: React.FC<CategoryProps> = ({
+  label,
+  icon: Icon,
+  selected,
+}) => {
   const { handleChangeCategory } = useCategories({ label });
 
   return (
@@ -26,6 +31,21 @@ const Category: React.FC<CategoryProps> = ({ label, icon: Icon, selected }) => {
       <Icon size={20} />
       <div className="font-medium text-sm">{label}</div>
     </div>
+  );
+};
+
+const Category: React.FC<CategoryProps> = (props) => {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex items-center justify-center text-center gap-2 p-2 border-b-2 border-transparent text-slate-500">
+          <div className="w-5 h-5 bg-slate-300 rounded animate-pulse"></div>
+          <div className="w-16 h-4 bg-slate-300 rounded animate-pulse"></div>
+        </div>
+      }
+    >
+      <CategoryContent {...props} />
+    </Suspense>
   );
 };
 
