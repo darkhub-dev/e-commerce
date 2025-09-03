@@ -60,7 +60,7 @@ const CartClient: React.FC<CartClientProps> = ({ currentUser }) => {
             return <ItemContent key={item.id} item={item} />;
           })}
       </div>
-      <div className="border-t-[1.5px] border-slate-200 py-4 flex justify-between gap-4">
+      <div className="border-t-[1.5px] border-zinc-800 py-4 flex justify-between gap-4">
         <div className="w-[90px]">
           <Button
             label="Clear Cart"

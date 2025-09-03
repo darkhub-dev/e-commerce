@@ -21,16 +21,16 @@ const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {
 
   return (
     <>
-      <div className="relative z-30  hover:scale-110 active:scale-100 transition">
+      <div className="relative z-30 active:scale-100 transition">
         <div
           onClick={toggleOpen}
-          className="p-1 border-[2px] border-slate-400 flex flex-row items-center gap-1 rounded-full cursor-pointer hover:shadow-md transition text-slate-100"
+          className="p-1 border border-gray-500 flex flex-row items-center gap-1 rounded-full cursor-pointer hover:shadow-md transition text-slate-100"
         >
           <Avatar src={currentUser?.image} />
           <AiFillCaretDown />
         </div>
         {isOpen && (
-          <div className="absolute rounded-md shadow-md w-[170px] bg-white overflow-hidden right-0 top-12 text-sm flex flex-col cursor-pointer">
+          <div className="absolute rounded-md shadow-md w-[170px] overflow-hidden right-0 top-12 text-sm flex flex-col cursor-pointer bg-gray-800/30 backdrop-blur-sm border border-gray-500/70 text-white p-2">
             {currentUser ? (
               <div>
                 {currentUser.role === "ADMIN" ? (

@@ -16,7 +16,7 @@ const CategoriesContent = () => {
   if (!isMainPage) return null;
 
   return (
-    <div className="hidden sm:block border-b-[0.5px] bg-slate-300">
+    <div className="hidden sm:block border-b-[0.5px] border-slate-500">
       <Container>
         <div className="pt-1 flex flex-wrap items-center justify-between overlow-x-auto">
           {categories.map((item) => (
@@ -40,7 +40,7 @@ const Categories = () => {
   return (
     <Suspense
       fallback={
-        <div className="hidden sm:block border-b-[0.5px] bg-slate-300 h-12"></div>
+        <div className="hidden sm:block border-b-[0.5px] bg-gray-500/50 h-12"></div>
       }
     >
       <CategoriesContent />

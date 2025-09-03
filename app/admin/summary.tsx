@@ -89,7 +89,7 @@ const Summary: React.FC<SummaryProps> = ({ products, orders, users }) => {
             return (
               <div
                 key={key}
-                className="rounded-xl border-2 p-4 flex flex-col items-center gap-2 transition"
+                className="rounded-xl border-2 border-zinc-800 p-4 flex flex-col items-center gap-2 transition"
               >
                 <div className="text-xl md:text-4xl font-bold">
                   {summaryData[key].label === "Total Sale" ? (

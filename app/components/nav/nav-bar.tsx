@@ -29,7 +29,7 @@ const NavBar: React.FC<NavBarPros> = ({ currentUser }) => {
   };
 
   return (
-    <div className="sticky top-0 w-full bg-slate-700 z-30 shadow-xl">
+    <div className="sticky top-0 w-full bg-[#191919] z-30 shadow-xl">
       <div className="py-4 border-b-[1px] border-slate-500">
         <Container>
           <div className="flex items-center justify-between sm:px-2 xl:px-0">
@@ -40,9 +40,9 @@ const NavBar: React.FC<NavBarPros> = ({ currentUser }) => {
               {path && path.includes("/product") && (
                 <MdArrowBackIos className="text-[1.4rem] sm:text-[1.25rem] mb-1 sm:mb-[1.75px]" />
               )}
-              <span className="text-[1.6rem] sm:text-[1.65rem]">S</span>mart{" "}
-              <span className="text-[1.6rem] sm:text-[1.65rem] ml-1">S</span>
-              tore
+              <span className="text-[1.6rem] sm:text-[1.65rem]">H</span>san{" "}
+              <span className="text-[1.6rem] sm:text-[1.65rem] ml-1">A</span>
+              nber
             </Link>
 
             <div className="flex items-center gap-4 md:gap-8 xl:gap-12">
@@ -76,7 +76,7 @@ const NavBar: React.FC<NavBarPros> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
-      <Categories />
+      {/* <Categories /> */}
     </div>
   );
 };
