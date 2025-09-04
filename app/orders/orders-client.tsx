@@ -39,21 +39,24 @@ const OrdersClient: React.FC<OrdersClient> = ({ orders }) => {
 
   let rows: any = [];
 
-  const handleDeleteOrder = useCallback((row: string) => {
-    axios
-      .put("/api/delete-order", {
-        row,
-      })
-      .then((res) => {
-        handleRemovePaymentIntent();
-        toast.success("Order Deleted.");
-        router.refresh();
-      })
-      .catch((error) => {
-        toast.error("Oops! Something went wrong.");
-        console.log(error);
-      });
-  }, []);
+  const handleDeleteOrder = useCallback(
+    (row: string) => {
+      axios
+        .put("/api/delete-order", {
+          row,
+        })
+        .then((res) => {
+          handleRemovePaymentIntent();
+          toast.success("Order Deleted.");
+          router.refresh();
+        })
+        .catch((error) => {
+          toast.error("Oops! Something went wrong.");
+          console.log(error);
+        });
+    },
+    [handleRemovePaymentIntent, router]
+  );
 
   if (orders) {
     rows = orders.map((order) => {

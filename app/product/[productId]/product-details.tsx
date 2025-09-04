@@ -65,16 +65,13 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
         setIsProductInCart(true);
       }
     }
-  }, [cartProducts]);
+  }, [cartProducts, product.id]);
 
-  const handleColorSelect = useCallback(
-    (value: SelectedImgType) => {
-      setCartProduct((prev) => {
-        return { ...prev, selectedImg: value };
-      });
-    },
-    [cartProduct.selectedImg]
-  );
+  const handleColorSelect = useCallback((value: SelectedImgType) => {
+    setCartProduct((prev) => {
+      return { ...prev, selectedImg: value };
+    });
+  }, []);
 
   const handleQuantityIncrease = useCallback(() => {
     if (cartProduct.quantity === 99) return;

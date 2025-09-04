@@ -51,50 +51,56 @@ const ManageProductsClient: React.FC<ManageProductsClientProps> = ({
     });
   }
 
-  const handleToggleStock = useCallback((id: string, inStock: boolean) => {
-    axios
-      .put("/api/product", {
-        id,
-        inStock: !inStock,
-      })
-      .then((res) => {
-        toast.success("Product status changed.");
-        router.refresh();
-      })
-      .catch((error) => {
-        toast.error("Oops! Something went wrong.");
-        console.log(error);
-      });
-  }, []);
+  const handleToggleStock = useCallback(
+    (id: string, inStock: boolean) => {
+      axios
+        .put("/api/product", {
+          id,
+          inStock: !inStock,
+        })
+        .then((res) => {
+          toast.success("Product status changed.");
+          router.refresh();
+        })
+        .catch((error) => {
+          toast.error("Oops! Something went wrong.");
+          console.log(error);
+        });
+    },
+    [router]
+  );
 
-  const handleDelete = useCallback(async (id: string, images: any[]) => {
-    toast("Deleting product, please wait...");
+  const handleDelete = useCallback(
+    async (id: string, images: any[]) => {
+      toast("Deleting product, please wait...");
 
-    const handleImageDelete = async () => {
-      try {
-        for (const item of images) {
-          if (item.image) {
-            const imageRef = ref(storage, item.image);
-            await deleteObject(imageRef);
+      const handleImageDelete = async () => {
+        try {
+          for (const item of images) {
+            if (item.image) {
+              const imageRef = ref(storage, item.image);
+              await deleteObject(imageRef);
+            }
           }
+        } catch (error) {
+          return console.log("Deleting image error", error);
         }
-      } catch (error) {
-        return console.log("Deleting image error", error);
-      }
-    };
+      };
 
-    await handleImageDelete();
+      await handleImageDelete();
 
-    axios
-      .delete(`/api/product/${id}`)
-      .then((res) => {
-        toast.success("Product status changed");
-        router.refresh();
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+      axios
+        .delete(`/api/product/${id}`)
+        .then((res) => {
+          toast.success("Product status changed");
+          router.refresh();
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    [router, storage]
+  );
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 220 },

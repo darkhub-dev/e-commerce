@@ -41,17 +41,6 @@ const EditProductForm = ({ product }: { product: Product }) => {
   const [images, setImages] = useState<ImageType[] | null>();
   const [oldImages, setOldImages] = useState<UploadedImageType[]>();
 
-  useEffect(() => {
-    setCustomValue("name", product.name);
-    setCustomValue("description", product.description);
-    setCustomValue("brand", product.brand);
-    setCustomValue("category", product.category);
-    setCustomValue("inStock", product.inStock);
-    setCustomValue("price", product.price);
-    setCustomValue("list", product.list);
-    setOldImages(product.images);
-  }, []);
-
   const {
     register,
     handleSubmit,
@@ -71,17 +60,41 @@ const EditProductForm = ({ product }: { product: Product }) => {
     },
   });
 
-  const setCustomValue = (id: string, value: any) => {
-    setValue(id, value, {
-      shouldValidate: true,
-      shouldDirty: true,
-      shouldTouch: true,
-    });
-  };
+  const setCustomValue = useCallback(
+    (id: string, value: any) => {
+      setValue(id, value, {
+        shouldValidate: true,
+        shouldDirty: true,
+        shouldTouch: true,
+      });
+    },
+    [setValue]
+  );
+
+  useEffect(() => {
+    setCustomValue("name", product.name);
+    setCustomValue("description", product.description);
+    setCustomValue("brand", product.brand);
+    setCustomValue("category", product.category);
+    setCustomValue("inStock", product.inStock);
+    setCustomValue("price", product.price);
+    setCustomValue("list", product.list);
+    setOldImages(product.images);
+  }, [
+    product.name,
+    product.description,
+    product.brand,
+    product.category,
+    product.inStock,
+    product.price,
+    product.list,
+    product.images,
+    setCustomValue,
+  ]);
 
   useEffect(() => {
     setCustomValue("images", images);
-  }, [images]);
+  }, [images, setCustomValue]);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     setIsLoading(true);

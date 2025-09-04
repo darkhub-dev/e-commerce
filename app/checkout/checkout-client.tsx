@@ -54,7 +54,7 @@ const CheckoutClient = () => {
           toast.error("Something went wrong.");
         });
     }
-  }, []);
+  }, [cartProducts, handleSetPaymentIntent, paymentIntent, router]);
 
   const options: StripeElementsOptions = {
     clientSecret,
@@ -64,12 +64,9 @@ const CheckoutClient = () => {
     },
   };
 
-  const handleSetPaymentSuccess = useCallback(
-    (value: boolean) => {
-      setPaymentSuccess(value);
-    },
-    [cartProducts, paymentIntent]
-  );
+  const handleSetPaymentSuccess = useCallback((value: boolean) => {
+    setPaymentSuccess(value);
+  }, []);
 
   return (
     <div className="w-full">

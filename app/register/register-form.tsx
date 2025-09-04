@@ -20,6 +20,7 @@ interface RegisterFormProps {
 
 const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -37,9 +38,7 @@ const RegisterForm: React.FC<RegisterFormProps> = ({ currentUser }) => {
       router.push("/cart");
       router.refresh();
     }
-  }, []);
-
-  const router = useRouter();
+  }, [currentUser, router]);
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);

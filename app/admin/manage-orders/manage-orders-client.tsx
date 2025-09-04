@@ -49,53 +49,62 @@ const ManageOrdersClient: React.FC<ManageOrdersClientProps> = ({ orders }) => {
     });
   }
 
-  const handleDispatch = useCallback((id: string) => {
-    axios
-      .put("/api/order", {
-        id,
-        deliveryStatus: "dispatched",
-      })
-      .then((res) => {
-        toast.success("Order Dispatched.");
-        router.refresh();
-      })
-      .catch((error) => {
-        toast.error("Oops! Something went wrong.");
-        console.log(error);
-      });
-  }, []);
+  const handleDispatch = useCallback(
+    (id: string) => {
+      axios
+        .put("/api/order", {
+          id,
+          deliveryStatus: "dispatched",
+        })
+        .then((res) => {
+          toast.success("Order Dispatched.");
+          router.refresh();
+        })
+        .catch((error) => {
+          toast.error("Oops! Something went wrong.");
+          console.log(error);
+        });
+    },
+    [router]
+  );
 
-  const handleDeliver = useCallback((id: string) => {
-    axios
-      .put("/api/order", {
-        id,
-        deliveryStatus: "delivered",
-      })
-      .then((res) => {
-        toast.success("Order Delivered.");
-        router.refresh();
-      })
-      .catch((error) => {
-        toast.error("Oops! Something went wrong.");
-        console.log(error);
-      });
-  }, []);
+  const handleDeliver = useCallback(
+    (id: string) => {
+      axios
+        .put("/api/order", {
+          id,
+          deliveryStatus: "delivered",
+        })
+        .then((res) => {
+          toast.success("Order Delivered.");
+          router.refresh();
+        })
+        .catch((error) => {
+          toast.error("Oops! Something went wrong.");
+          console.log(error);
+        });
+    },
+    [router]
+  );
 
-  const handleDeleteOrder = useCallback((row: string) => {
-    axios
-      .put("/api/delete-order", {
-        row,
-      })
-      .then((res) => {
-        localStorage.removeItem("paymentIntent");
-        toast.success("Order Deleted.");
-        router.refresh();
-      })
-      .catch((error) => {
-        toast.error("Oops! Something went wrong.");
-        console.log(error);
-      });
-  }, []);
+  const handleDeleteOrder = useCallback(
+    (row: string) => {
+      axios
+        .put("/api/delete-order", {
+          row,
+        })
+        .then((res) => {
+          localStorage.removeItem("paymentIntent");
+          toast.success("Order Deleted.");
+          router.refresh();
+        })
+        .catch((error) => {
+          toast.error("Oops! Something went wrong.");
+          console.log(error);
+        });
+    },
+    [router]
+  );
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", width: 220 },

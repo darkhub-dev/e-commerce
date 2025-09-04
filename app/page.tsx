@@ -1,11 +1,10 @@
 export const revalidate = 0;
 
-import Container from "./components/container";
-import HomeBanner from "./components/home-banner";
-import ProductCard from "./components/products/product-card";
 import getProducts, { IProductParams } from "@/actions/get-products";
-import NullData from "./components/null-data";
 import Image from "next/image";
+import HomeBanner from "./components/home-banner";
+import NullData from "./components/null-data";
+import ProductCard from "./components/products/product-card";
 
 interface HomeProps {
   searchParams: IProductParams;
@@ -149,7 +148,8 @@ export default async function Home({ searchParams }: HomeProps) {
         <p className="text-gray-500 text-lg pl-6 pt-2">
           Explore our handpicked selection of featured properties. Each listing
           offers a glimpse into exceptional homes and investments available
-          through HasanAnber. Click "View Details" for more information.
+          through HasanAnber. Click &quot;View Details&quot; for more
+          information.
         </p>
       </section>
       <div className="container mx-auto grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4 sm:gap-8">
